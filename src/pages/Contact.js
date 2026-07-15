@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MessageSquare, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import FacebookIcon from '../components/FacebookIcon';
 import heroBg from '../ApexSolar.png';
 
 export default function Contact() {
@@ -53,7 +54,8 @@ export default function Contact() {
             {[
               { icon: Phone, label: 'Call', value: '(715) 210-9610', href: 'tel:+17152109610' },
               { icon: MessageSquare, label: 'Text', value: '(715) 210-9610', href: 'sms:+17152109610' },
-              { icon: Mail, label: 'Email', value: 'info@arkhamenterprises.com', href: 'mailto:info@arkhamenterprises.com' },
+              { icon: Mail, label: 'Email', value: 'redacted@example.com', href: 'mailto:redacted@example.com' },
+              { icon: FacebookIcon, label: 'Facebook', value: 'Find us on Facebook', href: 'https://www.facebook.com/profile.php?id=61590641048935' },
               { icon: MapPin, label: 'Service Area', value: 'Regional — contact to confirm' },
               { icon: Clock, label: 'Hours', value: 'Mon–Fri: 8am–6pm' },
             ].map(({ icon: Icon, label, value, href }) => (
@@ -64,7 +66,7 @@ export default function Contact() {
                 <div>
                   <div style={{ fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 4 }}>{label}</div>
                   {href ? (
-                    <a href={href} style={{ color: 'var(--stone)', fontSize: 14, textDecoration: 'none', borderBottom: '1px solid var(--border)' }}>{value}</a>
+                    <a href={href} {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} style={{ color: 'var(--stone)', fontSize: 14, textDecoration: 'none', borderBottom: '1px solid var(--border)' }}>{value}</a>
                   ) : (
                     <div style={{ color: 'var(--stone)', fontSize: 14 }}>{value}</div>
                   )}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FacebookIcon from './FacebookIcon';
 import logo from '../arkhamprofilesquare.png';
 
 export default function Footer() {
@@ -18,6 +19,15 @@ export default function Footer() {
             <p style={{ fontSize: 13, color: '#D6E4F0', lineHeight: 1.7, maxWidth: 240 }}>
               Apex Solar and Construction — powering communities with expert solar solutions and quality construction.
             </p>
+            <a href="https://www.facebook.com/profile.php?id=61590641048935" target="_blank" rel="noopener noreferrer"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 20, color: '#D6E4F0', fontSize: 13, transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--stone)'}
+              onMouseLeave={e => e.currentTarget.style.color = '#D6E4F0'}>
+              <span style={{ width: 34, height: 34, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 2, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                <FacebookIcon size={16} color="#D6B64A" />
+              </span>
+              Find us on Facebook
+            </a>
           </div>
 
           <div>
