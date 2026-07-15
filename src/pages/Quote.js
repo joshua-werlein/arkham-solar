@@ -74,7 +74,6 @@ export default function Quote() {
           <p style={{ color: 'var(--muted)', lineHeight: 1.8, marginBottom: 16 }}>
             Thank you, <strong style={{ color: 'var(--stone)' }}>{data.name}</strong>. Our team will review your project details and reach out within <strong style={{ color: 'var(--red)' }}>24 hours</strong> with a personalized estimate.
           </p>
-          <p style={{ color: 'var(--muted)', fontSize: 13 }}>Confirmation sent to: {data.email}</p>
         </div>
       </main>
     );

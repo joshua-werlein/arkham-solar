@@ -27,11 +27,11 @@ export default function Home() {
   return (
     <main>
       {/* HERO */}
-      <section style={{
+      <section className="hero-section" style={{
         position: 'relative', aspectRatio: '1092 / 605', minHeight: '800px', display: 'flex',
         alignItems: 'center', justifyContent: 'center', overflow: 'hidden',
       }}>
-        <img src={heroBg} alt="" aria-hidden style={{
+        <img src={heroBg} alt="" aria-hidden className="hero-bg" style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%',
           objectFit: 'fill', objectPosition: 'center',
           filter: 'brightness(1.1)',
@@ -91,7 +91,7 @@ export default function Home() {
       {/* ABOUT PREVIEW */}
       <section id="about" style={{ paddingTop: 160, paddingBottom: 100, position: 'relative', overflow: 'hidden' }}>
         <div className="ghost-a" style={{ right: -80, top: '50%', transform: 'translateY(-50%)' }}>A</div>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="container grid-collapse" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center', position: 'relative', zIndex: 1 }}>
           <div>
             <div className="section-label" style={{ marginBottom: 12, color: '#D6B64A' }}>Who We Are</div>
             <div className="section-divider" />
@@ -113,7 +113,6 @@ export default function Home() {
             }} />
           </div>
         </div>
-        <style>{`@media(max-width:768px){.about-grid{grid-template-columns:1fr !important;}}`}</style>
       </section>
 
       {/* SERVICES */}

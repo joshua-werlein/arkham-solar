@@ -40,7 +40,7 @@ export default function Contact() {
       </section>
 
       <section style={{ padding: '100px 0' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 80 }}>
+        <div className="container grid-collapse" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 80 }}>
           {/* Info */}
           <div>
             <div className="section-label" style={{ marginBottom: 12, color: '#D6B64A', fontSize: 14, fontWeight: 700 }}>Contact Information</div>

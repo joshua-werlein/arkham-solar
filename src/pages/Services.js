@@ -66,7 +66,7 @@ export default function Services() {
         <div className="container">
           <div style={{ display: 'grid', gap: 2, background: 'var(--border)' }}>
             {services.map(({ icon: Icon, title, tagline, desc, features }, i) => (
-              <div key={title} style={{
+              <div key={title} className="service-row" style={{
                 background: i % 2 === 0 ? 'var(--black)' : 'var(--charcoal)',
                 display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64,
                 padding: '64px', alignItems: 'center',
@@ -112,7 +112,7 @@ export default function Services() {
       </section>
 
       <style>{`@media(max-width:768px){
-        .service-row{grid-template-columns:1fr !important; padding:40px 24px !important;}
+        .service-row{grid-template-columns:1fr !important; padding:40px 24px !important; gap:32px !important;}
         .service-row > div { order: 0 !important; }
       }`}</style>
     </main>

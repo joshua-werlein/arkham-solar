@@ -17,7 +17,7 @@
   --font-body: 'Inter', sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   background-color: var(--black);
@@ -146,4 +146,25 @@ select option { background: var(--charcoal); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ---- Mobile responsiveness ---- */
+
+/* Any two-column grid gets this class to stack on small screens */
+@media (max-width: 900px) {
+  .grid-collapse {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+}
+
+/* Home hero: on phones, drop the fixed aspect ratio and let the image crop instead of stretch */
+@media (max-width: 768px) {
+  .hero-section {
+    aspect-ratio: auto !important;
+    min-height: 100svh !important;
+  }
+  .hero-bg {
+    object-fit: cover !important;
+  }
 }

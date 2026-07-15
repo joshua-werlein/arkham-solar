@@ -27,7 +27,7 @@ export default function About() {
       {/* Mission */}
       <section style={{ padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
         <div className="ghost-a" style={{ right: -80, top: 0 }}>A</div>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center', position: 'relative', zIndex: 1 }}>
+        <div className="container grid-collapse" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center', position: 'relative', zIndex: 1 }}>
           <div>
             <img src={logo} alt="Arkham Enterprises" style={{ width: '80%', filter: 'drop-shadow(0 0 60px rgba(192,24,26,0.15))' }} />
           </div>
