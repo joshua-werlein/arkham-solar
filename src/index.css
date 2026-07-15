@@ -1,0 +1,149 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0A0A0A;
+  --charcoal: #141414;
+  --surface: #1A1A1A;
+  --border: #2A2A2A;
+  --red: #C0181A;
+  --red-dark: #8B1010;
+  --red-glow: rgba(192, 24, 26, 0.15);
+  --white: #FFFFFF;
+  --stone: #E8E6E0;
+  --muted: #888888;
+  --text: #CCCCCC;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-accent: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--black);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+img { max-width: 100%; display: block; }
+input, textarea, select {
+  font-family: var(--font-body);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--white);
+  border-radius: 2px;
+  padding: 12px 16px;
+  width: 100%;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  outline: none;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--red); }
+select option { background: var(--charcoal); }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  color: var(--stone);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); }
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--red);
+  margin-bottom: 16px;
+}
+
+.section-label {
+  font-family: var(--font-accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.ghost-a {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(200px, 30vw, 400px);
+  color: rgba(255,255,255,0.025);
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: 1;
+  z-index: 0;
+}
+
+/* Rolling clouds over the hero sky */
+.hero-clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+  /* confine motion to the sky — fades out before the rooftops */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 70%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 70%);
+}
+.hero-clouds--light {
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  background-size: 1600px 800px;
+  background-image:
+    radial-gradient(ellipse 620px 200px at 18% 28%, rgba(255,90,70,0.22), transparent 62%),
+    radial-gradient(ellipse 540px 170px at 62% 18%, rgba(230,60,45,0.18), transparent 62%),
+    radial-gradient(ellipse 700px 230px at 88% 38%, rgba(255,120,90,0.16), transparent 62%);
+  animation: cloudDriftA 40s linear infinite;
+}
+.hero-clouds--dark {
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-size: 2000px 900px;
+  background-image:
+    radial-gradient(ellipse 700px 240px at 30% 35%, rgba(40,0,0,0.5), transparent 60%),
+    radial-gradient(ellipse 600px 200px at 75% 25%, rgba(60,5,5,0.45), transparent 60%);
+  animation: cloudDriftB 45s linear infinite;
+}
+@keyframes cloudDriftA { from { background-position: 0 0; } to { background-position: 1600px 0; } }
+@keyframes cloudDriftB { from { background-position: 0 0; } to { background-position: -2000px 0; } }
+@media (prefers-reduced-motion: reduce) { .hero-clouds { animation: none !important; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
