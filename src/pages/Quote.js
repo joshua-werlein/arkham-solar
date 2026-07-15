@@ -84,7 +84,7 @@ export default function Quote() {
       <div className="container" style={{ maxWidth: 720 }}>
         {/* Header */}
         <div style={{ marginBottom: 48 }}>
-          <div className="section-label" style={{ marginBottom: 12 }}>Free Estimate</div>
+          <div className="section-label" style={{ marginBottom: 12, color: '#D6B64A', fontSize: 15, fontWeight: 700 }}>Free Estimate</div>
           <div className="section-divider" />
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(40px, 5vw, 64px)', color: 'var(--stone)', letterSpacing: 2, lineHeight: 1 }}>REQUEST A QUOTE</h1>
         </div>
@@ -98,7 +98,7 @@ export default function Quote() {
               borderRight: i < steps.length - 1 ? '1px solid var(--border)' : 'none',
               transition: 'background 0.3s',
             }}>
-              <div style={{ fontFamily: 'var(--font-accent)', fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: i === step ? 'white' : i < step ? 'var(--red)' : 'var(--muted)' }}>
+              <div style={{ fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 2, textTransform: 'uppercase', color: i <= step ? '#FFFFFF' : '#D6E4F0' }}>
                 {i < step ? '✓ ' : `${i + 1}. `}{s}
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function Quote() {
               <div style={{ display: 'grid', gap: 20 }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Property Type</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Property Type</label>
                     <select value={data.propertyType} onChange={e => set('propertyType', e.target.value)}>
                       <option value="">Select...</option>
                       <option>Single Family Home</option>
@@ -148,7 +148,7 @@ export default function Quote() {
                     </select>
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Monthly Electric Bill</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Monthly Electric Bill</label>
                     <select value={data.monthlyBill} onChange={e => set('monthlyBill', e.target.value)}>
                       <option value="">Select...</option>
                       <option>Under $100</option>
@@ -161,7 +161,7 @@ export default function Quote() {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Desired Timeline *</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Desired Timeline *</label>
                     <select required value={data.timeline} onChange={e => set('timeline', e.target.value)}>
                       <option value="">Select...</option>
                       <option>As soon as possible</option>
@@ -172,7 +172,7 @@ export default function Quote() {
                     </select>
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Budget Range</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Budget Range</label>
                     <select value={data.budget} onChange={e => set('budget', e.target.value)}>
                       <option value="">Select...</option>
                       <option>Under $15,000</option>
@@ -184,7 +184,7 @@ export default function Quote() {
                   </div>
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Additional Notes</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Additional Notes</label>
                   <textarea rows={4} value={data.notes} onChange={e => set('notes', e.target.value)} placeholder="Tell us anything else that would help us prepare your estimate..." style={{ resize: 'vertical' }} />
                 </div>
               </div>
@@ -199,21 +199,21 @@ export default function Quote() {
               <div style={{ display: 'grid', gap: 20 }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Full Name *</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Full Name *</label>
                     <input required value={data.name} onChange={e => set('name', e.target.value)} placeholder="John Smith" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Email *</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Email *</label>
                     <input required type="email" value={data.email} onChange={e => set('email', e.target.value)} placeholder="john@example.com" />
                   </div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Phone</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Phone</label>
                     <input type="tel" value={data.phone} onChange={e => set('phone', e.target.value)} placeholder="(555) 000-0000" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Property Address</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Property Address</label>
                     <input value={data.address} onChange={e => set('address', e.target.value)} placeholder="123 Main St, City, State" />
                   </div>
                 </div>
@@ -260,7 +260,7 @@ export default function Quote() {
                 ))}
                 {data.notes && (
                   <div style={{ padding: '12px 0', borderBottom: '1px solid var(--border)' }}>
-                    <div style={{ fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Notes</div>
+                    <div style={{ fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Notes</div>
                     <div style={{ color: 'var(--stone)', fontSize: 14, lineHeight: 1.6 }}>{data.notes}</div>
                   </div>
                 )}

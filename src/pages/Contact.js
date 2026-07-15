@@ -87,26 +87,26 @@ export default function Contact() {
               <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 20 }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Full Name *</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Full Name *</label>
                     <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="John Smith" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Email *</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Email *</label>
                     <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="john@example.com" />
                   </div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Phone</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Phone</label>
                     <input type="tel" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} placeholder="(555) 000-0000" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Subject</label>
+                    <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Subject</label>
                     <input value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} placeholder="General inquiry" />
                   </div>
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Message *</label>
+                  <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 3, color: '#D6E4F0', textTransform: 'uppercase', marginBottom: 8 }}>Message *</label>
                   <textarea required rows={6} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="Tell us about your project or inquiry..." style={{ resize: 'vertical' }} />
                 </div>
                 {/* Honeypot field — hidden from humans, catches spam bots */}
