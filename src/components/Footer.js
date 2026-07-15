@@ -24,7 +24,7 @@ export default function Footer() {
               onMouseEnter={e => e.currentTarget.style.color = 'var(--stone)'}
               onMouseLeave={e => e.currentTarget.style.color = '#D6E4F0'}>
               <span style={{ width: 34, height: 34, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 2, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                <FacebookIcon size={16} color="#D6B64A" />
+                <FacebookIcon size={16} color="#1877F2" />
               </span>
               Find us on Facebook
             </a>

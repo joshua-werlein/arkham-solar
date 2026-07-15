@@ -87,7 +87,7 @@ export default function Navbar() {
               fontWeight: 600,
               letterSpacing: 2,
               textTransform: 'uppercase',
-              color: location.pathname === link.to ? 'var(--red)' : 'var(--stone)',
+              color: location.pathname === link.to ? '#D6B64A' : 'var(--stone)',
               padding: '12px 0',
               borderBottom: '1px solid var(--border)',
             }}>

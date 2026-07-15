@@ -199,7 +199,7 @@ export default function Projects() {
           <div style={{ textAlign: 'center', marginTop: 48 }}>
             <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="btn-outline"
               style={{ borderWidth: 2, borderColor: '#D6B64A', color: '#D6B64A', fontWeight: 600 }}>
-              <FacebookIcon size={16} color="#D6B64A" /> See More on Facebook
+              <FacebookIcon size={16} color="#1877F2" /> See More on Facebook
             </a>
           </div>
         </div>

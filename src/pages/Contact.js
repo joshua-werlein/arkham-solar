@@ -61,7 +61,7 @@ export default function Contact() {
             ].map(({ icon: Icon, label, value, href }) => (
               <div key={label} style={{ display: 'flex', gap: 16, marginBottom: 28, alignItems: 'flex-start' }}>
                 <div style={{ width: 40, height: 40, background: 'var(--surface)', borderRadius: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '1px solid var(--border)' }}>
-                  <Icon size={18} color="#D6B64A" strokeWidth={1.5} />
+                  <Icon size={18} color={label === 'Facebook' ? '#1877F2' : '#D6B64A'} strokeWidth={1.5} />
                 </div>
                 <div>
                   <div style={{ fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 4 }}>{label}</div>
