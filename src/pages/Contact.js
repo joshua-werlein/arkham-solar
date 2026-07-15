@@ -3,13 +3,28 @@ import { Phone, MessageSquare, Mail, MapPin, Clock, Send, CheckCircle } from 'lu
 import heroBg from '../ApexSolar.png';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '', company: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In production: send to backend / email service
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('send failed');
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong sending your message. Please try again, or call/text us at (715) 210-9610.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -92,8 +107,13 @@ export default function Contact() {
                   <label style={{ display: 'block', fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 3, color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>Message *</label>
                   <textarea required rows={6} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="Tell us about your project or inquiry..." style={{ resize: 'vertical' }} />
                 </div>
-                <button type="submit" className="btn-primary" style={{ justifySelf: 'start', padding: '16px 40px' }}>
-                  Send Message <Send size={16} />
+                {/* Honeypot field — hidden from humans, catches spam bots */}
+                <input type="text" name="company" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} tabIndex="-1" autoComplete="off" style={{ position: 'absolute', left: '-9999px', height: 0, opacity: 0 }} aria-hidden="true" />
+                {error && (
+                  <p style={{ color: 'var(--red)', fontSize: 14, lineHeight: 1.6 }}>{error}</p>
+                )}
+                <button type="submit" className="btn-primary" disabled={sending} style={{ justifySelf: 'start', padding: '16px 40px', opacity: sending ? 0.6 : 1 }}>
+                  {sending ? 'Sending...' : 'Send Message'} <Send size={16} />
                 </button>
               </form>
             )}

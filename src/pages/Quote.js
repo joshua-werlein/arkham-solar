@@ -31,12 +31,30 @@ export default function Quote() {
   const [step, setStep] = useState(0);
   const [data, setData] = useState(initialData);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
   const set = (field, value) => setData(d => ({ ...d, [field]: value }));
 
-  const handleSubmit = () => {
-    // In production: submit to backend / CRM
-    setSubmitted(true);
+  const handleSubmit = async () => {
+    setSending(true);
+    setError('');
+    try {
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          projectType: projectTypes.find(p => p.id === data.projectType)?.label || data.projectType,
+        }),
+      });
+      if (!res.ok) throw new Error('send failed');
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong submitting your request. Please try again, or call/text us at (715) 210-9610.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const canNext = () => {
@@ -262,11 +280,14 @@ export default function Quote() {
               Next <ArrowRight size={16} />
             </button>
           ) : (
-            <button onClick={handleSubmit} className="btn-primary">
-              Submit Quote Request <ArrowRight size={16} />
+            <button onClick={handleSubmit} className="btn-primary" disabled={sending} style={{ opacity: sending ? 0.6 : 1 }}>
+              {sending ? 'Submitting...' : 'Submit Quote Request'} <ArrowRight size={16} />
             </button>
           )}
         </div>
+        {error && (
+          <p style={{ color: 'var(--red)', fontSize: 14, lineHeight: 1.6, marginTop: 16, textAlign: 'right' }}>{error}</p>
+        )}
       </div>
     </main>
   );
