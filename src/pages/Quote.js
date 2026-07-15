@@ -72,7 +72,7 @@ export default function Quote() {
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 56, color: 'var(--stone)', letterSpacing: 3, marginBottom: 16 }}>QUOTE REQUEST<br />RECEIVED</h1>
           <div style={{ width: 60, height: 2, background: 'var(--red)', margin: '0 auto 24px' }} />
           <p style={{ color: 'var(--muted)', lineHeight: 1.8, marginBottom: 16 }}>
-            Thank you, <strong style={{ color: 'var(--stone)' }}>{data.name}</strong>. Our team will review your project details and reach out within <strong style={{ color: 'var(--red)' }}>24 hours</strong> with a personalized estimate.
+            Thank you, <strong style={{ color: 'var(--stone)' }}>{data.name}</strong>. Our team will review your project details and reach out within <strong style={{ color: '#D6B64A' }}>24 hours</strong> with a personalized estimate.
           </p>
         </div>
       </main>
