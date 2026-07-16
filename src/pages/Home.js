@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Sun, Building2, Shield, ChevronDown, Zap, HardHat, Wrench } from 'lucide-react';
 import logo from '../arkhamprofilesquare.png';
 import heroBg from '../arkhamCover.png';
+import HeroSunToggle from '../components/HeroSunToggle';
 
 const stats = [
   { value: '500+', label: 'Projects Completed' },
@@ -34,11 +35,12 @@ export default function Home() {
         <img src={heroBg} alt="" aria-hidden className="hero-bg" style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%',
           objectFit: 'fill', objectPosition: 'center',
-          filter: 'brightness(1.1)',
         }} />
+        <div className="hero-edge-lift" aria-hidden="true" />
         <div className="hero-clouds hero-clouds--dark" aria-hidden="true" />
         <div className="hero-clouds hero-clouds--light" aria-hidden="true" />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.2) 50%, rgba(10,10,10,0.8) 100%)' }} />
+        <div className="hero-overlay" />
+        <HeroSunToggle />
 
         <div style={{
           position: 'relative', zIndex: 1, textAlign: 'center', padding: '0 24px',
@@ -48,7 +50,7 @@ export default function Home() {
         }}>
           <h1 style={{
             fontFamily: 'var(--font-display)', fontSize: 'clamp(56px, 10vw, 120px)',
-            color: 'var(--stone)', lineHeight: 0.9, letterSpacing: 4,
+            color: 'var(--hero-heading)', lineHeight: 0.9, letterSpacing: 4,
             textShadow: '2px 2px 4px rgba(0,0,0,0.9)',
           }}>
             ARKHAM<br />ENTERPRISES
@@ -58,12 +60,12 @@ export default function Home() {
             Apex Solar and Construction
           </div>
           <div style={{ width: 60, height: 2, background: 'var(--red)', margin: '24px auto' }} />
-          <p style={{ fontSize: 'clamp(15px, 2vw, 18px)', fontWeight: 600, color: '#FFFFFF', maxWidth: 560, margin: '32px auto 40px', lineHeight: 1.7, textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>
+          <p style={{ fontSize: 'clamp(15px, 2vw, 18px)', fontWeight: 600, color: 'var(--hero-text)', maxWidth: 560, margin: '32px auto 40px', lineHeight: 1.7, textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>
             Professional solar installation and construction services. We build sustainable futures, one project at a time.
           </p>
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginTop: 8 }}>
             <Link to="/quote" className="btn-primary" style={{ fontSize: 15, color: '#FFFFFF' }}>Get a Free Quote <ArrowRight size={16} /></Link>
-            <Link to="/services" className="btn-outline" style={{ borderWidth: 2, borderColor: '#D6B64A', color: '#D6B64A', fontWeight: 600 }}>Our Services</Link>
+            <Link to="/services" className="btn-outline" style={{ borderWidth: 2, borderColor: '#D6B64A', color: '#D6B64A', fontSize: 15, fontWeight: 600 }}>Our Services</Link>
           </div>
         </div>
 
@@ -82,7 +84,7 @@ export default function Home() {
           {stats.map(({ value, label }) => (
             <div key={label} style={{ padding: '40px 24px', textAlign: 'center', borderRight: '1px solid var(--border)' }}>
               <div style={{ fontFamily: 'var(--font-display)', fontSize: 48, color: 'var(--stone)', lineHeight: 1, letterSpacing: 2 }}>{value}</div>
-              <div style={{ fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 2, color: '#D6B64A', textTransform: 'uppercase', marginTop: 8 }}>{label}</div>
+              <div style={{ fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 600, letterSpacing: 2, color: 'var(--gold)', textTransform: 'uppercase', marginTop: 8 }}>{label}</div>
             </div>
           ))}
         </div>
@@ -93,23 +95,23 @@ export default function Home() {
         <div className="ghost-a" style={{ right: -80, top: '50%', transform: 'translateY(-50%)' }}>A</div>
         <div className="container grid-collapse" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center', position: 'relative', zIndex: 1 }}>
           <div>
-            <div className="section-label" style={{ marginBottom: 12, color: '#D6B64A' }}>Who We Are</div>
+            <div className="section-label" style={{ marginBottom: 12, color: 'var(--gold)' }}>Who We Are</div>
             <div className="section-divider" />
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(42px, 5vw, 64px)', color: '#FFFFFF', lineHeight: 1, letterSpacing: 2, marginBottom: 24 }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(42px, 5vw, 64px)', color: 'var(--stone)', lineHeight: 1, letterSpacing: 2, marginBottom: 24 }}>
               BUILT ON<br />EXPERTISE
             </h2>
-            <p style={{ color: '#D6E4F0', lineHeight: 1.8, marginBottom: 16 }}>
+            <p style={{ color: 'var(--copy)', lineHeight: 1.8, marginBottom: 16 }}>
               Arkham Enterprises operates Apex Solar and Construction — a full-service solar and construction company built on a foundation of technical excellence and client trust.
             </p>
-            <p style={{ color: '#D6E4F0', lineHeight: 1.8, marginBottom: 32 }}>
+            <p style={{ color: 'var(--copy)', lineHeight: 1.8, marginBottom: 32 }}>
               From residential rooftop installations to large commercial solar arrays, our team delivers end-to-end solutions that reduce energy costs and increase property value.
             </p>
-            <Link to="/about" className="btn-outline" style={{ borderWidth: 2, borderColor: '#D6B64A', color: '#D6B64A', fontWeight: 600 }}>Learn More <ArrowRight size={14} /></Link>
+            <Link to="/about" className="btn-outline" style={{ borderWidth: 2, borderColor: 'var(--gold)', color: 'var(--gold)', fontWeight: 600 }}>Learn More <ArrowRight size={14} /></Link>
           </div>
           <div>
             <img src={logo} alt="Arkham Enterprises" style={{
               width: '100%', maxWidth: 400, margin: '0 auto',
-              filter: 'drop-shadow(0 0 60px rgba(192,24,26,0.2)) brightness(0.9)',
+              filter: 'drop-shadow(0 0 60px var(--red-glow)) brightness(0.9)',
             }} />
           </div>
         </div>
@@ -120,7 +122,7 @@ export default function Home() {
         <div className="ghost-a" style={{ left: -80, bottom: -60 }}>A</div>
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
-            <div className="section-label" style={{ marginBottom: 12, color: '#D6B64A' }}>What We Do</div>
+            <div className="section-label" style={{ marginBottom: 12, color: 'var(--gold)' }}>What We Do</div>
             <div className="section-divider" style={{ margin: '0 auto 16px' }} />
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(42px, 5vw, 64px)', color: 'var(--stone)', letterSpacing: 2 }}>OUR SERVICES</h2>
           </div>
@@ -133,14 +135,14 @@ export default function Home() {
               }}
               onMouseEnter={e => e.currentTarget.style.background = 'var(--surface)'}
               onMouseLeave={e => e.currentTarget.style.background = 'var(--charcoal)'}>
-                <Icon size={32} color="#D6B64A" strokeWidth={1.5} style={{ marginBottom: 16 }} />
+                <Icon size={32} color="var(--gold)" strokeWidth={1.5} style={{ marginBottom: 16 }} />
                 <h3 style={{ fontFamily: 'var(--font-accent)', fontSize: 20, fontWeight: 700, color: 'var(--stone)', marginBottom: 12, letterSpacing: 1 }}>{title}</h3>
-                <p style={{ color: '#FFFFFF', fontSize: 14, lineHeight: 1.7 }}>{desc}</p>
+                <p style={{ color: 'var(--copy)', fontSize: 14, lineHeight: 1.7 }}>{desc}</p>
               </div>
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 48 }}>
-            <Link to="/services" className="btn-outline" style={{ borderWidth: 2, borderColor: '#D6B64A', color: '#D6B64A', fontWeight: 600 }}>View All Services <ArrowRight size={16} /></Link>
+            <Link to="/services" className="btn-outline" style={{ borderWidth: 2, borderColor: 'var(--gold)', color: 'var(--gold)', fontWeight: 600 }}>View All Services <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>
@@ -155,13 +157,13 @@ export default function Home() {
           </p>
           <Link to="/quote" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: 'var(--black)', color: 'var(--white)',
+            background: 'var(--ink)', color: '#FFFFFF',
             fontFamily: 'var(--font-accent)', fontWeight: 700, fontSize: 14,
             letterSpacing: 2, textTransform: 'uppercase', padding: '14px 32px', borderRadius: 2,
             transition: 'background 0.2s',
           }}
-          onMouseEnter={e => e.currentTarget.style.background = '#1a1a1a'}
-          onMouseLeave={e => e.currentTarget.style.background = 'var(--black)'}>
+          onMouseEnter={e => e.currentTarget.style.background = 'var(--ink-hover)'}
+          onMouseLeave={e => e.currentTarget.style.background = 'var(--ink)'}>
             Request a Quote <ArrowRight size={16} />
           </Link>
         </div>

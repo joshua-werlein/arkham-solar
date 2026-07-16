@@ -56,8 +56,8 @@ export default function Services() {
         <img src={heroBg} alt="" aria-hidden style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--black) 0%, transparent 60%)' }} />
         <div className="container" style={{ position: 'relative', zIndex: 1, paddingBottom: 64 }}>
-          <div className="section-label" style={{ marginBottom: 8 }}>What We Offer</div>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 6vw, 80px)', color: 'var(--stone)', letterSpacing: 3 }}>OUR SERVICES</h1>
+          <div className="section-label" style={{ marginBottom: 8, color: '#D6B64A', fontSize: 15, fontWeight: 700 }}>What We Offer</div>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 6vw, 80px)', color: 'var(--hero-heading)', letterSpacing: 3 }}>OUR SERVICES</h1>
         </div>
       </section>
 
@@ -73,19 +73,19 @@ export default function Services() {
               }}>
                 <div style={{ order: i % 2 === 0 ? 0 : 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                    <Icon size={28} color="#D6B64A" strokeWidth={1.5} />
-                    <span style={{ fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 700, letterSpacing: 4, color: '#D6B64A', textTransform: 'uppercase' }}>{tagline}</span>
+                    <Icon size={28} color="var(--gold)" strokeWidth={1.5} />
+                    <span style={{ fontFamily: 'var(--font-accent)', fontSize: 13, fontWeight: 700, letterSpacing: 4, color: 'var(--gold)', textTransform: 'uppercase' }}>{tagline}</span>
                   </div>
                   <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 3vw, 48px)', color: 'var(--stone)', letterSpacing: 2, marginBottom: 16 }}>{title.toUpperCase()}</h2>
-                  <p style={{ color: '#D6E4F0', lineHeight: 1.8, marginBottom: 32 }}>{desc}</p>
+                  <p style={{ color: 'var(--copy)', lineHeight: 1.8, marginBottom: 32 }}>{desc}</p>
                   <Link to="/quote" className="btn-primary" style={{ fontSize: 12 }}>Request This Service <ArrowRight size={14} /></Link>
                 </div>
-                <div style={{ order: i % 2 === 0 ? 1 : 0, padding: '32px', background: 'var(--surface)', borderLeft: '2px solid #D6B64A' }}>
-                  <div style={{ fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 4, color: '#FFFFFF', textTransform: 'uppercase', marginBottom: 20 }}>Includes</div>
+                <div style={{ order: i % 2 === 0 ? 1 : 0, padding: '32px', background: 'var(--surface)', borderLeft: '2px solid var(--gold)' }}>
+                  <div style={{ fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 4, color: 'var(--stone)', textTransform: 'uppercase', marginBottom: 20 }}>Includes</div>
                   {features.map(f => (
                     <div key={f} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                      <CheckCircle size={16} color="#D6B64A" strokeWidth={2} style={{ flexShrink: 0 }} />
-                      <span style={{ color: '#D6E4F0', fontSize: 14 }}>{f}</span>
+                      <CheckCircle size={16} color="var(--gold)" strokeWidth={2} style={{ flexShrink: 0 }} />
+                      <span style={{ color: 'var(--copy)', fontSize: 14 }}>{f}</span>
                     </div>
                   ))}
                 </div>
@@ -102,7 +102,7 @@ export default function Services() {
           <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 40, maxWidth: 480, margin: '0 auto 40px' }}>Our team will walk you through your options and recommend the right solution for your needs and budget.</p>
           <Link to="/contact" style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: 'var(--black)', color: 'var(--white)',
+            background: 'var(--ink)', color: '#FFFFFF',
             fontFamily: 'var(--font-accent)', fontWeight: 700, fontSize: 14,
             letterSpacing: 2, textTransform: 'uppercase', padding: '16px 40px', borderRadius: 2,
           }}>

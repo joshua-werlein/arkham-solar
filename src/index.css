@@ -15,6 +15,55 @@
   --font-display: 'Bebas Neue', sans-serif;
   --font-accent: 'Rajdhani', sans-serif;
   --font-body: 'Inter', sans-serif;
+
+  /* Theme-aware semantic tokens (used by Navbar / Footer / Home) */
+  --gold: #D6B64A;
+  --copy: #D6E4F0;
+  --footer-link: #EAE6DF;
+  --nav-text: #E0E0E0;
+  --footer-bg: #080808;
+  --surface-97: rgba(10, 10, 10, 0.97);
+  --surface-99: rgba(10, 10, 10, 0.99);
+  --ghost: rgba(255, 255, 255, 0.025);
+  /* Constant regardless of theme — hero copy always sits on the photo,
+     which keeps its own dark-bottom gradient for legibility */
+  --hero-text: #FFFFFF;
+  --hero-heading: #E8E6E0;
+  /* Constant dark ink for accent buttons that need to read as "dark"
+     against a colored band (e.g. the CTA banner) in either theme */
+  --ink: #0A0A0A;
+  --ink-hover: #1A1A1A;
+}
+
+/* -----------------------------------------------------------------------
+   LIGHT THEME — toggled via data-theme="light" on <html>.
+   Same brand family (red/gold), inverted surfaces. The hero photo itself
+   is retinted separately below (see .hero-bg / .hero-overlay).
+   ----------------------------------------------------------------------- */
+:root[data-theme="light"] {
+  --black: #FAF6F0;
+  --charcoal: #F1EAE0;
+  --surface: #FFFFFF;
+  --border: #E4DACB;
+  --red: #C45C28;
+  --red-dark: #A84A1E;
+  --red-glow: rgba(196, 92, 40, 0.15);
+  /* --white intentionally NOT overridden — it's used for text that sits
+     on top of accent-colored elements (buttons, red bands) which stay
+     legible-on-white in both themes. Text on the page surface itself
+     uses --stone, which does flip. */
+  --stone: #241F26;
+  --muted: #7A7268;
+  --text: #4A433D;
+
+  --gold: #9C6B12;
+  --copy: #3A332C;
+  --footer-link: #3A332C;
+  --nav-text: #3A332C;
+  --footer-bg: #F1EAE0;
+  --surface-97: rgba(250, 246, 240, 0.97);
+  --surface-99: rgba(250, 246, 240, 0.99);
+  --ghost: rgba(0, 0, 0, 0.035);
 }
 
 html { scroll-behavior: smooth; overflow-x: clip; }
@@ -27,6 +76,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -36,7 +86,7 @@ input, textarea, select {
   font-family: var(--font-body);
   background: var(--surface);
   border: 1px solid var(--border);
-  color: var(--white);
+  color: var(--stone);
   border-radius: 2px;
   padding: 12px 16px;
   width: 100%;
@@ -103,12 +153,49 @@ select option { background: var(--charcoal); }
   position: absolute;
   font-family: var(--font-display);
   font-size: clamp(200px, 30vw, 400px);
-  color: rgba(255,255,255,0.025);
+  color: var(--ghost);
   pointer-events: none;
   -webkit-user-select: none;
   user-select: none;
   line-height: 1;
   z-index: 0;
+}
+
+/* Hero background photo — lightened per Julio's note (brighter sky, panels
+   should read clearly), and lightened further/warmer in light theme */
+.hero-bg {
+  filter: brightness(1.52) saturate(0.9) contrast(0.92);
+  transition: filter 0.4s ease;
+}
+:root[data-theme="light"] .hero-bg {
+  filter: brightness(1.78) saturate(0.68) contrast(0.86) hue-rotate(-6deg);
+}
+
+/* The source photo has a natural vignette (dark corners/edges). This lifts
+   just the edges back up without washing out the center composition. */
+.hero-edge-lift {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 85% 75% at 50% 42%, transparent 45%, rgba(255,190,150,0.22) 100%);
+  mix-blend-mode: screen;
+  transition: opacity 0.4s ease;
+}
+:root[data-theme="light"] .hero-edge-lift {
+  background: radial-gradient(ellipse 85% 75% at 50% 42%, transparent 40%, rgba(255,214,170,0.32) 100%);
+}
+
+/* Dark-to-light gradient behind hero copy, keeps text legible over the
+   photo in both themes; lightened/raised so the rooftop panels aren't
+   crushed into black, and light theme trades it for a warm dusk tone */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.1) 50%, rgba(10,10,10,0.52) 100%);
+  transition: background 0.4s ease;
+}
+:root[data-theme="light"] .hero-overlay {
+  background: linear-gradient(to bottom, rgba(255,214,170,0.18) 0%, rgba(255,170,110,0.12) 45%, rgba(30,18,16,0.52) 100%);
 }
 
 /* Rolling clouds over the hero sky */
@@ -120,6 +207,7 @@ select option { background: var(--charcoal); }
   /* confine motion to the sky — fades out before the rooftops */
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 70%);
           mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 70%);
+  transition: opacity 0.4s ease;
 }
 .hero-clouds--light {
   opacity: 0.45;
@@ -132,7 +220,7 @@ select option { background: var(--charcoal); }
   animation: cloudDriftA 40s linear infinite;
 }
 .hero-clouds--dark {
-  opacity: 0.5;
+  opacity: 0.32;
   mix-blend-mode: multiply;
   background-size: 2000px 900px;
   background-image:
@@ -140,9 +228,127 @@ select option { background: var(--charcoal); }
     radial-gradient(ellipse 600px 200px at 75% 25%, rgba(60,5,5,0.45), transparent 60%);
   animation: cloudDriftB 45s linear infinite;
 }
+:root[data-theme="light"] .hero-clouds--dark { opacity: 0.18; }
+:root[data-theme="light"] .hero-clouds--light { opacity: 0.6; mix-blend-mode: soft-light; }
 @keyframes cloudDriftA { from { background-position: 0 0; } to { background-position: 1600px 0; } }
 @keyframes cloudDriftB { from { background-position: 0 0; } to { background-position: -2000px 0; } }
 @media (prefers-reduced-motion: reduce) { .hero-clouds { animation: none !important; } }
+
+/* Theme toggle button — sun (light) <-> solar panel (dark) crossfade */
+.theme-toggle {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.theme-toggle .icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, transform 0.35s ease;
+}
+.theme-toggle .icon-sun { color: #C4881F; }
+.theme-toggle .icon-panel { color: var(--gold); }
+
+:root[data-theme="light"] .theme-toggle .icon-sun { opacity: 1; transform: rotate(0deg) scale(1); }
+:root[data-theme="light"] .theme-toggle .icon-panel { opacity: 0; transform: rotate(70deg) scale(0.5); }
+:root[data-theme="dark"] .theme-toggle .icon-sun { opacity: 0; transform: rotate(-70deg) scale(0.5); }
+:root[data-theme="dark"] .theme-toggle .icon-panel { opacity: 1; transform: rotate(0deg) scale(1); }
+
+/* Hero sun/moon toggle — no drawn icon, just an invisible hit target
+   over the photo's own sun with a ring hint so it still reads as clickable.
+   Width/height are set inline (responsive via clamp+vw); ring and pulse use
+   percentage insets so they scale proportionally with whatever size that is. */
+.hero-sun-toggle {
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Button itself is centered via an inline transform (translate), so the
+   hover "grow" effect is applied to the ring/pulse children instead of
+   fighting that inline transform. */
+.hero-sun-toggle:hover .hero-sun-toggle__ring { transform: scale(1.18); }
+
+/* Static, always-on ring — sized to sit right at the edge of the photo's
+   sun disc. Soft warm glow instead of a hard stroke, so it reads as light
+   bleeding from the sun itself rather than a drawn-on circle. */
+.hero-sun-toggle__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 235, 200, 0.45);
+  box-shadow: 0 0 20px 4px rgba(255, 200, 130, 0.55);
+  pointer-events: none;
+  transition: transform 0.25s ease;
+}
+:root[data-theme="dark"] .hero-sun-toggle__ring {
+  border-color: rgba(215, 224, 255, 0.45);
+  box-shadow: 0 0 20px 4px rgba(180, 200, 255, 0.5);
+}
+
+/* Subtle continuous "you can click this" hint — a soft glow pulse rather
+   than an expanding line, so it still reads as the sun breathing/glowing */
+.hero-sun-toggle__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 28px 6px rgba(255, 200, 130, 0.6);
+  animation: sunPulse 3.2s ease-out infinite;
+  pointer-events: none;
+}
+:root[data-theme="dark"] .hero-sun-toggle__pulse {
+  box-shadow: 0 0 28px 6px rgba(180, 200, 255, 0.55);
+}
+@keyframes sunPulse {
+  0%   { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-sun-toggle__pulse { animation: none; opacity: 0; }
+}
+
+.hero-sun-toggle__tip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 6px);
+  white-space: nowrap;
+  font-family: var(--font-accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: rgba(10, 8, 8, 0.8);
+  padding: 5px 10px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.hero-sun-toggle:hover .hero-sun-toggle__tip,
+.hero-sun-toggle:focus-visible .hero-sun-toggle__tip {
+  opacity: 1;
+  transform: translate(-50%, 10px);
+}
+
+@media (max-width: 768px) {
+  /* Below 768px the hero photo switches to object-fit: cover (see
+     .hero-bg override further down), which crops rather than stretches —
+     our percentage position no longer lines up with the photo's sun, so
+     hide this control there. The navbar toggle still covers theme-switching. */
+  .hero-sun-toggle { display: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }

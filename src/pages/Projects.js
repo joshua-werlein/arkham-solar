@@ -118,8 +118,8 @@ export default function Projects() {
         <img src={heroBg} alt="" aria-hidden style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--black) 0%, transparent 60%)' }} />
         <div className="container" style={{ position: 'relative', zIndex: 1, paddingBottom: 64 }}>
-          <div className="section-label" style={{ marginBottom: 8 }}>Our Work</div>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 6vw, 80px)', color: 'var(--stone)', letterSpacing: 3 }}>PROJECTS</h1>
+          <div className="section-label" style={{ marginBottom: 8, color: '#D6B64A', fontSize: 15, fontWeight: 700 }}>Our Work</div>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 6vw, 80px)', color: 'var(--hero-heading)', letterSpacing: 3 }}>PROJECTS</h1>
         </div>
       </section>
 
@@ -131,7 +131,7 @@ export default function Projects() {
               fontFamily: 'var(--font-accent)', fontSize: 12, fontWeight: 600,
               letterSpacing: 2, textTransform: 'uppercase', padding: '10px 20px',
               background: filter === cat ? 'var(--red)' : 'transparent',
-              color: filter === cat ? 'var(--white)' : '#D6E4F0',
+              color: filter === cat ? '#FFFFFF' : 'var(--copy)',
               border: '1px solid', borderColor: filter === cat ? 'var(--red)' : 'var(--border)',
               borderRadius: 2, transition: 'all 0.2s',
             }}>
@@ -172,10 +172,10 @@ export default function Projects() {
                     </span>
                   )}
                 </button>
-                <div style={{ padding: '32px 36px 40px', borderLeft: '3px solid #D6B64A', flex: 1 }}>
-                  <div style={{ fontFamily: 'var(--font-accent)', fontSize: 12, fontWeight: 700, letterSpacing: 4, color: '#D6B64A', textTransform: 'uppercase', marginBottom: 12 }}>{project.type}</div>
+                <div style={{ padding: '32px 36px 40px', borderLeft: '3px solid var(--gold)', flex: 1 }}>
+                  <div style={{ fontFamily: 'var(--font-accent)', fontSize: 12, fontWeight: 700, letterSpacing: 4, color: 'var(--gold)', textTransform: 'uppercase', marginBottom: 12 }}>{project.type}</div>
                   <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 28, color: 'var(--stone)', letterSpacing: 1, marginBottom: 12 }}>{project.title}</h3>
-                  <p style={{ color: '#D6E4F0', fontSize: 14, lineHeight: 1.7, marginBottom: 24 }}>{project.desc}</p>
+                  <p style={{ color: 'var(--copy)', fontSize: 14, lineHeight: 1.7, marginBottom: 24 }}>{project.desc}</p>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, borderTop: '1px solid var(--border)', paddingTop: 20 }}>
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 4, color: 'var(--muted)', fontSize: 11, marginBottom: 4 }}><MapPin size={10} /><span>Location</span></div>
@@ -198,7 +198,7 @@ export default function Projects() {
           {/* Facebook CTA */}
           <div style={{ textAlign: 'center', marginTop: 48 }}>
             <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="btn-outline"
-              style={{ borderWidth: 2, borderColor: '#D6B64A', color: '#D6B64A', fontWeight: 600 }}>
+              style={{ borderWidth: 2, borderColor: 'var(--gold)', color: 'var(--gold)', fontWeight: 600 }}>
               <FacebookIcon size={16} color="#1877F2" /> See More on Facebook
             </a>
           </div>
@@ -254,7 +254,7 @@ export default function Projects() {
         <div className="container">
           <div className="ghost-a" style={{ left: '50%', transform: 'translateX(-50%)', top: -80, opacity: 0.03 }}>A</div>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 4vw, 56px)', color: 'var(--stone)', letterSpacing: 2, marginBottom: 16 }}>YOUR PROJECT NEXT</h2>
-          <p style={{ color: '#D6E4F0', marginBottom: 40, maxWidth: 480, margin: '0 auto 40px' }}>Join our growing list of satisfied clients. Get a free quote and see what Apex Solar and Construction can do for you.</p>
+          <p style={{ color: 'var(--copy)', marginBottom: 40, maxWidth: 480, margin: '0 auto 40px' }}>Join our growing list of satisfied clients. Get a free quote and see what Apex Solar and Construction can do for you.</p>
           <Link to="/quote" className="btn-primary">Start Your Project <ArrowRight size={16} /></Link>
         </div>
       </section>

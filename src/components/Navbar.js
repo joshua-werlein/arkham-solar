@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import logo from '../arkhamprofilesquare.png';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -24,20 +25,28 @@ export default function Navbar() {
 
   useEffect(() => { setOpen(false); }, [location]);
 
+  // While floating over the hero photo (unscrolled, transparent header) nav
+  // text needs to stay light regardless of theme — the photo is dark-ish in
+  // both themes. Once scrolled to the solid header background it switches
+  // to the theme-driven colors, which do need to flip in light mode.
+  const logoColor = scrolled ? 'var(--stone)' : 'var(--hero-heading)';
+  const goldColor = scrolled ? 'var(--gold)' : '#D6B64A';
+  const linkColor = scrolled ? 'var(--nav-text)' : 'var(--hero-heading)';
+
   return (
     <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled ? 'rgba(10,10,10,0.97)' : 'transparent',
-      borderBottom: scrolled ? '1px solid #1a1a1a' : '1px solid transparent',
+      background: scrolled ? 'var(--surface-97)' : 'transparent',
+      borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
       backdropFilter: scrolled ? 'blur(10px)' : 'none',
-      transition: 'all 0.3s ease',
+      transition: 'background 0.3s ease, border-color 0.3s ease',
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <img src={logo} alt="Arkham Enterprises" style={{ height: 44, width: 44, objectFit: 'contain' }} />
           <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--stone)', lineHeight: 1, letterSpacing: 2 }}>ARKHAM</div>
-<div style={{ fontFamily: 'var(--font-accent)', fontSize: 9, letterSpacing: 4, color: '#D6B64A', textTransform: 'uppercase', textShadow: '0 1px 8px rgba(0,0,0,0.9)'}}>ENTERPRISES</div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: logoColor, lineHeight: 1, letterSpacing: 2, transition: 'color 0.3s ease' }}>ARKHAM</div>
+<div style={{ fontFamily: 'var(--font-accent)', fontSize: 9, letterSpacing: 4, color: goldColor, textTransform: 'uppercase', textShadow: '0 1px 8px rgba(0,0,0,0.9)', transition: 'color 0.3s ease'}}>ENTERPRISES</div>
           </div>
         </Link>
 
@@ -50,32 +59,38 @@ export default function Navbar() {
               fontWeight: 600,
               letterSpacing: 1,
               textTransform: 'uppercase',
-              color: location.pathname === link.to ? '#D6B64A' : '#E0E0E0',
+              color: location.pathname === link.to ? goldColor : linkColor,
               padding: '8px 12px',
               transition: 'color 0.2s',
             }}
-            onMouseEnter={e => { e.target.style.color = '#FFFFFF'; }}
-            onMouseLeave={e => { e.target.style.color = location.pathname === link.to ? '#D6B64A' : '#E0E0E0'; }}
+            onMouseEnter={e => { e.target.style.color = scrolled ? 'var(--stone)' : '#FFFFFF'; }}
+            onMouseLeave={e => { e.target.style.color = location.pathname === link.to ? goldColor : linkColor; }}
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <Link to="/quote" className="btn-primary desktop-nav" style={{ padding: '10px 24px', fontSize: 12 }}>
-          Get a Quote
-        </Link>
+        <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <ThemeToggle />
+          <Link to="/quote" className="btn-primary" style={{ padding: '10px 24px', fontSize: 15 }}>
+            Get a Quote
+          </Link>
+        </div>
 
         {/* Mobile hamburger */}
-        <button onClick={() => setOpen(!open)} style={{ color: 'var(--stone)', display: 'none' }} className="mobile-menu-btn" aria-label="Toggle menu">
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div style={{ display: 'none', alignItems: 'center', gap: 12 }} className="mobile-controls">
+          <ThemeToggle />
+          <button onClick={() => setOpen(!open)} style={{ color: logoColor, transition: 'color 0.3s ease' }} className="mobile-menu-btn" aria-label="Toggle menu">
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {open && (
         <div style={{
-          background: 'rgba(10,10,10,0.99)',
+          background: 'var(--surface-99)',
           borderTop: '1px solid var(--border)',
           padding: '16px 24px 24px',
         }}>
@@ -87,7 +102,7 @@ export default function Navbar() {
               fontWeight: 600,
               letterSpacing: 2,
               textTransform: 'uppercase',
-              color: location.pathname === link.to ? '#D6B64A' : 'var(--stone)',
+              color: location.pathname === link.to ? 'var(--gold)' : 'var(--stone)',
               padding: '12px 0',
               borderBottom: '1px solid var(--border)',
             }}>
@@ -103,7 +118,7 @@ export default function Navbar() {
       <style>{`
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
-          .mobile-menu-btn { display: block !important; }
+          .mobile-controls { display: flex !important; }
         }
       `}</style>
     </header>

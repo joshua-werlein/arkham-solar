@@ -19,7 +19,7 @@ function NotFound() {
   return (
     <main style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '0 24px' }}>
       <div>
-        <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(80px, 15vw, 180px)', color: 'rgba(192,24,26,0.15)', lineHeight: 1 }}>404</div>
+        <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(80px, 15vw, 180px)', color: 'var(--red-glow)', lineHeight: 1 }}>404</div>
         <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4vw, 48px)', color: 'var(--stone)', letterSpacing: 2, marginTop: -20, marginBottom: 16 }}>PAGE NOT FOUND</h1>
         <p style={{ color: 'var(--muted)', marginBottom: 32 }}>The page you are looking for does not exist.</p>
         <a href="/" className="btn-primary">Return Home</a>
