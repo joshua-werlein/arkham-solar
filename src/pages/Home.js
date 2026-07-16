@@ -4,6 +4,7 @@ import { ArrowRight, Sun, Building2, Shield, ChevronDown, Zap, HardHat, Wrench }
 import logo from '../arkhamprofilesquare.png';
 import heroBg from '../arkhamCover.png';
 import HeroSunToggle from '../components/HeroSunToggle';
+import Seo from '../components/Seo';
 
 const stats = [
   { value: '500+', label: 'Projects Completed' },
@@ -26,7 +27,12 @@ export default function Home() {
   useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
 
   return (
-    <main>
+    <main id="main-content">
+      <Seo
+        title="Home | Apex Solar and Construction"
+        description="Solar installation and general contracting serving Buffalo County and the Chippewa Valley, WI. Get a free quote."
+        path="/"
+      />
       {/* HERO */}
       <section className="hero-section" style={{
         position: 'relative', aspectRatio: '1092 / 605', minHeight: '800px', display: 'flex',

@@ -1,5 +1,20 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  background: #c0181a;
+  color: #fff;
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
 :root {
   --black: #0A0A0A;
   --charcoal: #141414;
@@ -131,7 +146,7 @@ select option { background: var(--charcoal); }
   border-radius: 2px;
   transition: border-color 0.2s, color 0.2s;
 }
-.btn-outline:hover { border-color: var(--red); color: var(--red); }
+.btn-outline:hover { border-color: var(--red); color: var(--stone); }
 
 .section-divider {
   width: 60px;
@@ -146,7 +161,7 @@ select option { background: var(--charcoal); }
   font-weight: 600;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--gold);
 }
 
 .ghost-a {

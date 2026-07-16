@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Zap, Calendar, X, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import FacebookIcon from '../components/FacebookIcon';
 import heroBg from '../ApexSolar.png';
+import Seo from '../components/Seo';
 
 const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61590641048935';
 
@@ -112,7 +113,12 @@ export default function Projects() {
   }, [lightbox, close, step]);
 
   return (
-    <main>
+    <main id="main-content">
+      <Seo
+        title="Projects | Apex Solar and Construction"
+        description="See completed solar and construction projects across Buffalo County and the Chippewa Valley, WI."
+        path="/projects"
+      />
       {/* Hero */}
       <section style={{ position: 'relative', height: 360, display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
         <img src={heroBg} alt="" aria-hidden style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25)' }} />

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Phone, MessageSquare, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import FacebookIcon from '../components/FacebookIcon';
 import heroBg from '../ApexSolar.png';
+import Seo from '../components/Seo';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '', company: '' });
@@ -29,7 +30,12 @@ export default function Contact() {
   };
 
   return (
-    <main>
+    <main id="main-content">
+      <Seo
+        title="Contact | Apex Solar and Construction"
+        description="Get in touch with Apex Solar and Construction, serving Buffalo County and the Chippewa Valley, WI."
+        path="/contact"
+      />
       {/* Hero */}
       <section style={{ position: 'relative', height: 360, display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
         <img src={heroBg} alt="" aria-hidden style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25)' }} />
@@ -112,7 +118,7 @@ export default function Contact() {
                 {/* Honeypot field — hidden from humans, catches spam bots */}
                 <input type="text" name="company" value={form.company} onChange={e => setForm({ ...form, company: e.target.value })} tabIndex="-1" autoComplete="off" style={{ position: 'absolute', left: '-9999px', height: 0, opacity: 0 }} aria-hidden="true" />
                 {error && (
-                  <p style={{ color: 'var(--red)', fontSize: 14, lineHeight: 1.6 }}>{error}</p>
+                  <p role="alert" style={{ color: 'var(--stone)', fontSize: 14, lineHeight: 1.6 }}>{error}</p>
                 )}
                 <button type="submit" className="btn-primary" disabled={sending} style={{ justifySelf: 'start', padding: '16px 40px', opacity: sending ? 0.6 : 1 }}>
                   {sending ? 'Sending...' : 'Send Message'} <Send size={16} />

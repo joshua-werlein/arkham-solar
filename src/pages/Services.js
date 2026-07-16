@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Sun, Building2, HardHat, Zap, Wrench, Shield, ArrowRight, CheckCircle } from 'lucide-react';
 import heroBg from '../ApexSolar.png';
+import Seo from '../components/Seo';
 
 const services = [
   {
@@ -50,7 +51,12 @@ const services = [
 
 export default function Services() {
   return (
-    <main>
+    <main id="main-content">
+      <Seo
+        title="Services | Apex Solar and Construction"
+        description="Residential & commercial solar, construction, energy storage, and maintenance across Buffalo County and the Chippewa Valley, WI."
+        path="/services"
+      />
       {/* Hero */}
       <section style={{ position: 'relative', height: 360, display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
         <img src={heroBg} alt="" aria-hidden style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25)' }} />

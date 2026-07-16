@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Users, Target, Clock } from 'lucide-react';
 import logo from '../arkhamprofilesquare.png';
 import heroBg from '../ApexSolar.png';
+import Seo from '../components/Seo';
 
 const values = [
   { icon: Award, title: 'Quality First', desc: 'Every installation meets the highest industry standards, backed by our workmanship guarantee.' },
@@ -13,7 +14,12 @@ const values = [
 
 export default function About() {
   return (
-    <main>
+    <main id="main-content">
+      <Seo
+        title="About | Apex Solar and Construction"
+        description="Full-service solar installation and general contracting serving Buffalo County and the Chippewa Valley, WI."
+        path="/about"
+      />
       {/* Page Hero */}
       <section style={{ position: 'relative', height: 360, display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
         <img src={heroBg} alt="" aria-hidden style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.25)' }} />

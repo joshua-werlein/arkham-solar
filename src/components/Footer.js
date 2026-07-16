@@ -58,6 +58,15 @@ export default function Footer() {
           <p style={{ fontSize: 12, color: 'var(--muted)' }}>
             © {new Date().getFullYear()} Arkham Enterprises — Apex Solar and Construction. All rights reserved.
           </p>
+          <nav aria-label="Legal" style={{ display: 'flex', gap: 20 }}>
+            {[['Privacy Policy', '/privacy'], ['Terms of Service', '/terms'], ['Accessibility', '/accessibility']].map(([label, to]) => (
+              <Link key={to} to={to} style={{ color: 'var(--muted)', fontSize: 12, transition: 'color 0.2s' }}
+                onMouseEnter={e => e.target.style.color = 'var(--stone)'}
+                onMouseLeave={e => e.target.style.color = 'var(--muted)'}>
+                {label}
+              </Link>
+            ))}
+          </nav>
           <p style={{ fontSize: 12, color: 'var(--muted)' }}>
             <span style={{ color: 'var(--red)' }}>●</span> Apex Solar and Construction
           </p>

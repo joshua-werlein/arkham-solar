@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Legal pages (Privacy, Terms, Accessibility)
+   Quiet, readable, on-brand. Swap the fallback values below for your real
+   CSS custom properties if the names differ (e.g. --color-bg, --color-ink).
+   ========================================================================== */
+
+.legal-page {
+  --lp-bg: var(--black);
+  --lp-ink: var(--stone);
+  --lp-ink-muted: var(--muted);
+  --lp-accent: var(--red);
+  --lp-rule: rgba(232, 230, 224, 0.16);
+
+  background: var(--lp-bg);
+  color: var(--lp-ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.65;
+  /* Top padding clears the fixed 72px navbar plus breathing room, matching
+     the gap the hero pages (About/Services/Projects) leave below the nav.
+     min-height keeps short pages (Accessibility) tall enough that the
+     footer sits at the bottom of the viewport instead of mid-screen. */
+  min-height: 60vh;
+  padding: clamp(10rem, 16vw, 13rem) 1.25rem 6rem;
+}
+
+.legal-page__inner {
+  max-width: 68ch;
+  margin: 0 auto;
+}
+
+/* Eyebrow + title. Crimson (--lp-accent) is reserved for large text,
+   borders, and underlines only: #C0181A on near-black is ~3.1:1, which
+   passes WCAG AA for large text/UI (3:1) but FAILS for body-size text
+   (4.5:1). The eyebrow is 0.95rem, so it uses --gold (matches the
+   section-label convention used site-wide) instead of --lp-accent. */
+.legal-page__eyebrow {
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.legal-page h1 {
+  font-family: 'Bebas Neue', 'Rajdhani', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  letter-spacing: 0.03em;
+  line-height: 1.05;
+  margin: 0.35rem 0 0.5rem;
+  color: var(--lp-ink);
+}
+
+.legal-page__effective {
+  color: var(--lp-ink-muted);
+  font-size: 0.95rem;
+  margin: 0 0 2.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--lp-rule);
+}
+
+.legal-page h2 {
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 2.5rem 0 0.75rem;
+  color: var(--lp-ink);
+}
+
+.legal-page p,
+.legal-page li {
+  color: var(--lp-ink);
+  font-size: 1.02rem;
+  max-width: 68ch;
+}
+
+.legal-page ul {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.legal-page li {
+  margin-bottom: 0.4rem;
+}
+
+.legal-page strong {
+  color: var(--lp-ink);
+  font-weight: 600;
+}
+
+.legal-page a {
+  color: var(--lp-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--lp-accent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+.legal-page a:hover {
+  color: #ffffff;
+}
+
+/* Visible keyboard focus — required for WCAG 2.4.7 */
+.legal-page a:focus-visible {
+  outline: 3px solid var(--lp-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.legal-page address {
+  font-style: normal;
+  border-left: 3px solid var(--lp-accent);
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+
+/* People print legal pages — make that legible */
+@media print {
+  .legal-page {
+    background: #ffffff;
+    color: #111111;
+  }
+  .legal-page h1,
+  .legal-page h2,
+  .legal-page p,
+  .legal-page li,
+  .legal-page strong,
+  .legal-page a {
+    color: #111111;
+  }
+}
