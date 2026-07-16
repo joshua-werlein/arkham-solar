@@ -19,7 +19,7 @@
      the gap the hero pages (About/Services/Projects) leave below the nav.
      min-height keeps short pages (Accessibility) tall enough that the
      footer sits at the bottom of the viewport instead of mid-screen. */
-  min-height: 60vh;
+  min-height: 70vh;
   padding: clamp(10rem, 16vw, 13rem) 1.25rem 6rem;
 }
 
