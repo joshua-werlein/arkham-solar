@@ -1,0 +1,24 @@
+# Apex Solar and Construction
+ 
+> Solar installation, battery storage, and construction services for homes, businesses, and farms across Buffalo County and the Chippewa Valley in western Wisconsin. Free quotes with 24-hour follow-up. Call or text (715) 210-9610.
+ 
+Apex Solar and Construction designs and installs residential and commercial solar systems and battery storage, and provides full construction services including structural reinforcement, roof work, and electrical upgrades. Proactive maintenance and monitoring plans and vendor-neutral energy consultations are also offered.
+ 
+## Pages
+ 
+- [Home](https://arkhamsolar.com/): Company overview and featured services
+- [Services](https://arkhamsolar.com/services): Residential solar, commercial solar, construction, energy storage, maintenance and monitoring, and energy consultation
+- [Request a Quote](https://arkhamsolar.com/quote): Four-step free quote request form
+- [About](https://arkhamsolar.com/about): Company background and team
+- [Contact](https://arkhamsolar.com/contact): Contact form and phone
+ 
+## Quote Deep Links
+ 
+Pre-select a project type and start at the project details step:
+ 
+- [Residential solar quote](https://arkhamsolar.com/quote?type=residential-solar)
+- [Commercial solar quote](https://arkhamsolar.com/quote?type=commercial-solar)
+- [Construction quote](https://arkhamsolar.com/quote?type=construction)
+- [Energy storage quote](https://arkhamsolar.com/quote?type=energy-storage)
+- [Maintenance and monitoring quote](https://arkhamsolar.com/quote?type=maintenance)
+- [Energy consultation quote](https://arkhamsolar.com/quote?type=consultation)

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowRight, ArrowLeft, CheckCircle, Sun, Building2, HardHat, Zap, Home, Factory } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle, Sun, Building2, HardHat, Zap, Home, Factory, Wrench, Shield } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 import Seo from '../components/Seo';
 
 const steps = ['Project Type', 'Project Details', 'Your Info', 'Review & Submit'];
@@ -10,6 +11,8 @@ const projectTypes = [
   { id: 'construction', icon: HardHat, label: 'Construction', desc: 'Construction project' },
   { id: 'energy-storage', icon: Zap, label: 'Energy Storage', desc: 'Battery storage system' },
   { id: 'solar-construction', icon: Factory, label: 'Solar + Construction', desc: 'Combined project' },
+  { id: 'maintenance', icon: Wrench, label: 'Maintenance & Monitoring', desc: 'Service for an existing system' },
+  { id: 'consultation', icon: Shield, label: 'Energy Consultation', desc: 'Energy audit & ROI analysis' },
   { id: 'other', icon: Sun, label: 'Other / Unsure', desc: 'Tell us more' },
 ];
 
@@ -38,8 +41,11 @@ const fieldLabel = { display: 'block', fontFamily: 'var(--font-accent)', fontSiz
 const fieldError = { color: 'var(--red)', fontSize: 13, marginTop: 6 };
 
 export default function Quote() {
-  const [step, setStep] = useState(0);
-  const [data, setData] = useState(initialData);
+  const [searchParams] = useSearchParams();
+  const typeParam = searchParams.get('type');
+  const preselectedType = projectTypes.some(p => p.id === typeParam) ? typeParam : '';
+  const [step, setStep] = useState(preselectedType ? 1 : 0);
+  const [data, setData] = useState({ ...initialData, projectType: preselectedType });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);

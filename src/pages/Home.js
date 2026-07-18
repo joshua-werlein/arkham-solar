@@ -14,12 +14,12 @@ const stats = [
 ];
 
 const services = [
-  { icon: Sun, title: 'Residential Solar', desc: 'Custom solar solutions for homes — from design through installation and ongoing support.' },
-  { icon: Building2, title: 'Commercial Solar', desc: 'Large-scale solar systems for businesses, reducing operational costs and carbon footprint.' },
-  { icon: HardHat, title: 'Construction', desc: 'Full-service construction expertise to support every phase of your build.' },
-  { icon: Zap, title: 'Energy Storage', desc: 'Battery storage systems that maximize your energy independence day and night.' },
-  { icon: Wrench, title: 'Maintenance', desc: 'Ongoing maintenance and monitoring to keep your solar system performing at peak efficiency.' },
-  { icon: Shield, title: 'Consultation', desc: 'Expert energy audits and strategic planning to optimize your investment.' },
+  { icon: Sun, title: 'Residential Solar', quoteType: 'residential-solar', desc: 'Custom solar solutions for homes — from design through installation and ongoing support.' },
+  { icon: Building2, title: 'Commercial Solar', quoteType: 'commercial-solar', desc: 'Large-scale solar systems for businesses, reducing operational costs and carbon footprint.' },
+  { icon: HardHat, title: 'Construction', quoteType: 'construction', desc: 'Full-service construction expertise to support every phase of your build.' },
+  { icon: Zap, title: 'Energy Storage', quoteType: 'energy-storage', desc: 'Battery storage systems that maximize your energy independence day and night.' },
+  { icon: Wrench, title: 'Maintenance', quoteType: 'maintenance', desc: 'Ongoing maintenance and monitoring to keep your solar system performing at peak efficiency.' },
+  { icon: Shield, title: 'Consultation', quoteType: 'consultation', desc: 'Expert energy audits and strategic planning to optimize your investment.' },
 ];
 
 export default function Home() {
@@ -112,7 +112,7 @@ export default function Home() {
             <p style={{ color: 'var(--copy)', lineHeight: 1.8, marginBottom: 32 }}>
               From residential rooftop installations to large commercial solar arrays, our team delivers end-to-end solutions that reduce energy costs and increase property value.
             </p>
-            <Link to="/about" className="btn-outline" style={{ borderWidth: 2, borderColor: 'var(--gold)', color: 'var(--gold)', fontWeight: 600 }}>Learn More <ArrowRight size={14} /></Link>
+            <Link to="/about" className="btn-outline" style={{ borderWidth: 2, borderColor: 'var(--gold)', color: 'var(--gold)', fontWeight: 600 }}>Learn More About Us <ArrowRight size={14} /></Link>
           </div>
           <div>
             <img src={logo} alt="Arkham Enterprises" style={{
@@ -133,18 +133,17 @@ export default function Home() {
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(42px, 5vw, 64px)', color: 'var(--stone)', letterSpacing: 2 }}>OUR SERVICES</h2>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 1, border: '1px solid var(--border)', background: 'var(--border)' }}>
-            {services.map(({ icon: Icon, title, desc }) => (
-              <div key={title} style={{
+          {services.map(({ icon: Icon, title, desc, quoteType }) => (
+              <Link key={title} to={`/services#${quoteType}`} style={{
                 background: 'var(--charcoal)', padding: '40px 32px',
-                transition: 'background 0.2s',
-                cursor: 'pointer',
+                transition: 'background 0.2s', display: 'block', textDecoration: 'none',
               }}
               onMouseEnter={e => e.currentTarget.style.background = 'var(--surface)'}
               onMouseLeave={e => e.currentTarget.style.background = 'var(--charcoal)'}>
                 <Icon size={32} color="var(--gold)" strokeWidth={1.5} style={{ marginBottom: 16 }} />
                 <h3 style={{ fontFamily: 'var(--font-accent)', fontSize: 20, fontWeight: 700, color: 'var(--stone)', marginBottom: 12, letterSpacing: 1 }}>{title}</h3>
                 <p style={{ color: 'var(--copy)', fontSize: 14, lineHeight: 1.7 }}>{desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
           <div style={{ textAlign: 'center', marginTop: 48 }}>
@@ -158,7 +157,7 @@ export default function Home() {
         <div className="container" style={{ textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--font-accent)', fontSize: 18, fontWeight: 700, letterSpacing: 6, color: 'var(--white)', marginBottom: 12 }}>READY TO START?</div>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 5vw, 64px)', color: 'var(--white)', letterSpacing: 3, marginBottom: 16 }}>GET YOUR FREE QUOTE TODAY</h2>
-          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: 16, marginBottom: 40, maxWidth: 500, margin: '0 auto 40px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: 16, marginBottom: 40, maxWidth: 500, margin: '0 auto 40px' }}>
             Tell us about your project and our team will provide a detailed, no-obligation estimate within 24 hours.
           </p>
           <Link to="/quote" style={{
