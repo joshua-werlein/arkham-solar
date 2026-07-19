@@ -9,6 +9,6 @@
     "run_worker_first": ["/api/*"]
   },
   "vars": {
-    "FROM_EMAIL": "Arkham Solar Website <website@arkhamsolar.com>",
+    "FROM_EMAIL": "Arkham Solar Website <website@arkhamsolar.com>"
   }
 }
