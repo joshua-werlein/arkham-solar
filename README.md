@@ -46,3 +46,7 @@ src/           React app (pages, components, styles)
 worker/        Cloudflare Worker: SPA serving + /api/* email endpoints
 wrangler.jsonc Worker configuration
 ```
+
+## License
+
+Copyright © 2026 Joshua Werlein. Source published for portfolio review; all rights reserved.
