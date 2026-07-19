@@ -47,4 +47,8 @@ worker/        Cloudflare Worker: SPA serving + /api/* email endpoints
 wrangler.jsonc Worker configuration
 ```
 
-Legal Notice: All code and assets within this repository are the confidential and proprietary property of Arkham Enterprises. No part of this project may be copied, modified, published, or distributed without prior written consent. Access is provided solely for portfolio review and technical evaluation.
+<sub>
+<strong>Legal Notice:</strong> All code and assets within this repository are the confidential and proprietary
+property of Arkham Enterprises. No part of this project may be copied, modified, published, or distributed
+without prior written consent. Access is provided solely for portfolio review and technical evaluation.
+</sub>
