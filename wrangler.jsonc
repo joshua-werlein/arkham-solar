@@ -10,6 +10,5 @@
   },
   "vars": {
     "FROM_EMAIL": "Arkham Solar Website <website@arkhamsolar.com>",
-    "TO_EMAIL": "redacted@example.com"
   }
 }
