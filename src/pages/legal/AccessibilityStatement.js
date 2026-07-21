@@ -1,6 +1,7 @@
 import React from 'react';
 import Seo from '../../components/Seo';
 import './LegalPage.css';
+import { SITE } from "../../config/site";
 
 export default function AccessibilityStatement() {
   return (
@@ -29,9 +30,7 @@ export default function AccessibilityStatement() {
         <p>
           If you experience any difficulty accessing content on this Site or
           have suggestions for improvement, please contact us at{' '}
-          <a href="mailto:redacted@example.com">
-            redacted@example.com
-          </a>{' '}
+          <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>{' '}
           and we will work to address it promptly.
         </p>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Seo from '../../components/Seo';
 import './LegalPage.css';
+import { SITE } from "../../config/site";
 
 export default function PrivacyPolicy() {
   return (
@@ -141,9 +142,7 @@ export default function PrivacyPolicy() {
           Serving Buffalo County and the Chippewa Valley region
           <br />
           Email:{' '}
-          <a href="mailto:redacted@example.com">
-            redacted@example.com
-          </a>
+          <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
         </address>
       </div>
     </main>

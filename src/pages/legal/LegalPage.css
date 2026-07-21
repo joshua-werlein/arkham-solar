@@ -93,8 +93,9 @@
 .legal-page a {
   color: var(--lp-ink);
   text-decoration: underline;
+  -webkit-text-decoration-color: var(--lp-accent);
   text-decoration-color: var(--lp-accent);
-  text-underline-offset: 3px;
+  -webkit-text-decoration-thickness: 2px;
   text-decoration-thickness: 2px;
 }
 
