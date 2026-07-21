@@ -61,7 +61,7 @@ export default function Contact() {
             {[
               { icon: Phone, label: 'Call', value: '(715) 210-9610', href: 'tel:+17152109610' },
               { icon: MessageSquare, label: 'Text', value: '(715) 210-9610', href: 'sms:+17152109610' },
-              { icon: Mail, label: 'Email', value: SITE.contactEmail, href: 'mailto:${SITE.contactEmail}' },
+              { icon: Mail, label: 'Email', value: SITE.contactEmail, href: `mailto:${SITE.contactEmail}` },
               { icon: FacebookIcon, label: 'Facebook', value: 'Find us on Facebook', href: 'https://www.facebook.com/profile.php?id=61590641048935' },
               { icon: MapPin, label: 'Service Area', value: 'Regional — contact to confirm' },
               { icon: Clock, label: 'Hours', value: 'Mon–Fri: 8am–6pm' },
