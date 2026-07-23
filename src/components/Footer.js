@@ -31,8 +31,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <div style={{ fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 4, color: 'var(--gold)', marginBottom: 16, textTransform: 'uppercase' }}>Navigation</div>
-            {[['Home', '/'], ['About Us', '/about'], ['Services', '/services'], ['Projects', '/projects'], ['Contact', '/contact']].map(([label, to]) => (
+            <div style={{ fontFamily: 'var(--font-accent)', fontSize: 11, letterSpacing: 4, color: 'var(--gold)', marginBottom: 16, textTransform: 'uppercase' }}>Services</div>
+            {[
+              ['Residential Solar', '/services#residential-solar'],
+              ['Commercial Solar', '/services#commercial-solar'],
+              ['Construction', '/services#construction'],
+              ['Energy Storage', '/services#energy-storage'],
+              ['Maintenance', '/services#maintenance'],
+              ['Energy Consultation', '/services#consultation'],
+            ].map(([label, to]) => (
               <Link key={to} to={to} style={{ display: 'block', color: 'var(--footer-link)', fontSize: 14, marginBottom: 8, transition: 'color 0.2s' }}
                 onMouseEnter={e => e.target.style.color = 'var(--stone)'}
                 onMouseLeave={e => e.target.style.color = 'var(--footer-link)'}>
