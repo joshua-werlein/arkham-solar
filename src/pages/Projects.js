@@ -17,7 +17,7 @@ const projects = [
     capacity: '12kW',
     desc: 'South-facing rooftop array on a family home — clean panel lines, tucked wiring, and production that covers the bulk of the monthly bill.',
     category: 'residential',
-    images: ['/projects/rooftop-suburban-home.jpg', '/projects/rooftop-array-closeup.jpg'],
+    images: ['/projects/rooftop-array-closeup.jpg', '/projects/rooftop-suburban-home.jpg' ],
   },
   {
     id: 2,
